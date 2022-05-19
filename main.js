@@ -1,4 +1,4 @@
-var request = new XMLHttpRequest();
+let request = new XMLHttpRequest();
 let data = {};
 
 function requestListener() {
@@ -9,3 +9,4 @@ function requestListener() {
 request.addEventListener("load", requestListener);
 request.open("GET", "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json");
 request.send();
+
