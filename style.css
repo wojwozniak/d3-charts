@@ -28,3 +28,7 @@ body, html {
     min-height: 400px;
 }
 
+.bar {
+    fill: blue;
+}
+
