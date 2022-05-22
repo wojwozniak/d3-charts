@@ -32,3 +32,6 @@ body, html {
     fill: blue;
 }
 
+.bar:hover {
+    fill: black;
+}
