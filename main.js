@@ -33,7 +33,7 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
         });
 
         // Chart constants
-        const w = 700;
+        const w = 740;
         const h = 320;
         const padding = 1;
         const width = (700-275) / 275;
@@ -43,7 +43,7 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
 
         const xScale = d3.scaleLinear()
             .domain([new Date("1947-01-01"), new Date("2015-07-01")])
-            .range([0, w]);
+            .range([40, w]);
         
 
         const xAxis = d3.axisBottom()
@@ -52,10 +52,9 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .tickSize(5);
         
         const yScale = d3.scaleLinear()
-            .domain([0, d3.max(dataset[1])[1]])
-            .range(0, d3.max(dataset[1])[1]);
+            .domain([0, GDP[GDP.length-1]])
+            .range([h-20, 0]);
         
-        console.log(dataset[1][1]);
         
         const yAxis = d3.axisLeft()
             .scale(yScale);
@@ -76,14 +75,14 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
                 return d[1] * scale;
             })
             .attr("x", (d, i) => {
-                return i * (width + padding)
+                return 40 + i * (width + padding)
             })
             .attr("y", (d, i) => {
                 return (h-20) - d[1] * scale;
             });
         
         // Calling axes
-        
+
         const axisB = d3.select("svg")
             .append("g")
             .call(xAxis)
