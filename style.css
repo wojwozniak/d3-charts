@@ -24,8 +24,12 @@ body, html {
 
 #visHolder {
     background-color: white;
-    width: 85%;
+    width: 70%;
     min-height: 400px;
+    min-width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .bar {
@@ -34,4 +38,14 @@ body, html {
 
 .bar:hover {
     fill: black;
+}
+
+#x-axis {
+   transform: translate(0, 300px);
+   z-index: 10;
+}
+
+#y-axis {
+    transform: translate(100px);
+    z-index:10;
 }
