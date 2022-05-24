@@ -36,12 +36,12 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
         const w = 740;
         const h = 320;
         const padding = 1;
-        const width = (700-275) / 275;
+        const width = (700-274) / 275;
         const scale = 0.01;
 
         //Axes
 
-        const xScale = d3.scaleLinear()
+        const xScale = d3.scaleTime()
             .domain([new Date("1947-01-01"), new Date("2015-07-01")])
             .range([40, w]);
         
@@ -70,6 +70,12 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .enter()
             .append("rect")
             .attr("class", "bar")
+            .attr('data-date', (d, i) => {
+                return dataset[i][0];
+            })
+            .attr('data-gdp', (d, i) => {
+                return dataset[i][1];
+            })
             .attr("width", width)
             .attr("height", (d) => {
                 return d[1] * scale;
