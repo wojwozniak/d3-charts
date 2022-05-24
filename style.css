@@ -37,7 +37,7 @@ body, html {
 }
 
 .bar:hover {
-    fill: black;
+    fill: gray;
 }
 
 #x-axis {

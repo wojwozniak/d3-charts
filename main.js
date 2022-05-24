@@ -37,7 +37,7 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
         const h = 320;
         const padding = 1;
         const width = (700-274) / 275;
-        const scale = 0.01;
+        const scale = (h-20) / GDP[GDP.length - 1];
 
         //Axes
 
@@ -45,7 +45,6 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .domain([new Date("1947-01-01"), new Date("2015-07-01")])
             .range([40, w]);
         
-
         const xAxis = d3.axisBottom()
             .scale(xScale)
             .tickFormat(d3.timeFormat("%Y"))
