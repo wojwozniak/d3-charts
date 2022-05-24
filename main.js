@@ -87,7 +87,13 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             })
             //Adding tooltip
             .append("title")
-            .text((d) => d[0]);
+            .attr("id", "tooltip")
+            .attr('data-date', (d, i) => {
+                return dataset[i][0];
+            })
+            .text((d, i) => {
+                return `$${d[1].toFixed(1)} Billion\n${years[i]}`
+            });
 
         
         // Calling axes
