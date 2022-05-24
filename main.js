@@ -25,7 +25,7 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
                     quarter = "Q4";
                     break;
             }
-            return quarter + ' ' +  item[0].substring(0, 4);
+            return quarter + ' ' + item[0].substring(0, 4);
         });
 
         let GDP = dataset.map((item) => {
@@ -36,8 +36,8 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
         const w = 740;
         const h = 320;
         const padding = 1;
-        const width = (700-274) / 275;
-        const scale = (h-20) / GDP[GDP.length - 1];
+        const width = (700 - 274) / 275;
+        const scale = (h - 20) / GDP[GDP.length - 1];
 
         //Axes
 
@@ -51,8 +51,8 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .tickSize(5);
         
         const yScale = d3.scaleLinear()
-            .domain([0, GDP[GDP.length-1]])
-            .range([h-20, 0]);
+            .domain([0, GDP[GDP.length - 1]])
+            .range([h - 20, 0]);
         
         
         const yAxis = d3.axisLeft()
@@ -83,8 +83,12 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
                 return 40 + i * (width + padding)
             })
             .attr("y", (d, i) => {
-                return (h-20) - d[1] * scale;
-            });
+                return (h - 20) - d[1] * scale;
+            })
+            //Adding tooltip
+            .append("title")
+            .text((d) => d[0]);
+
         
         // Calling axes
 
@@ -97,8 +101,4 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .append("g")
             .call(yAxis)
             .attr('id', 'y-axis');
-
-})
-
-
-//h-d*scale
+    });
