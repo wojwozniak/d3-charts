@@ -1,7 +1,13 @@
+// D3
+// Contact with API
 let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json')
     .then((data) => {
+
+        // Extracting data for chart
         const dataset = data.data;
         console.log(dataset);
+
+        // Extracting years and GDP into separate arrays
         let years = dataset.map((item) => {
             let quarter = "";
             let helper = item[0].substring(5, 7);
@@ -21,12 +27,19 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             }
             return quarter + ' ' +  item[0].substring(0, 4);
         });
-        console.log(years);
+
+        let GDP = dataset.map((item) => {
+            return item[1];
+        });
+
+        // Chart constants
         const w = 700;
         const h = 320;
         const padding = 1;
         const width = (700-275) / 275;
         const scale = 0.01;
+
+        //Axes
 
         const xScale = d3.scaleLinear()
             .domain([new Date("1947-01-01"), new Date("2015-07-01")])
@@ -40,11 +53,15 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
         
         const yScale = d3.scaleLinear()
             .domain([0, d3.max(dataset[1])[1]])
-            .range(h - 20, 0);
+            .range(0, d3.max(dataset[1])[1]);
+        
+        console.log(dataset[1][1]);
         
         const yAxis = d3.axisLeft()
             .scale(yScale);
         
+        // Drawing chart
+
         const visual = d3.select("#visHolder")
             .append("svg")
             .attr("width", w)
@@ -64,6 +81,9 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .attr("y", (d, i) => {
                 return (h-20) - d[1] * scale;
             });
+        
+        // Calling axes
+        
         const axisB = d3.select("svg")
             .append("g")
             .call(xAxis)

@@ -46,6 +46,6 @@ body, html {
 }
 
 #y-axis {
-    transform: translate(100px);
+    transform: translate(100px, 150px);
     z-index:10;
 }
