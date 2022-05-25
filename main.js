@@ -7,27 +7,7 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
         const dataset = data.data;
         console.log(dataset);
 
-        // Extracting years and GDP into separate arrays
-        let years = dataset.map((item) => {
-            let quarter = "";
-            let helper = item[0].substring(5, 7);
-            switch (helper) {
-                case "01":
-                    quarter = "Q1";
-                    break;
-                case "04":
-                    quarter = "Q2";
-                    break;
-                case "07":
-                    quarter = "Q3";
-                    break;
-                case "10":
-                    quarter = "Q4";
-                    break;
-            }
-            return quarter + ' ' + item[0].substring(0, 4);
-        });
-
+        //Extracting GDP into seperate array
         let GDP = dataset.map((item) => {
             return item[1];
         });
@@ -40,7 +20,6 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
         const scale = (h - 20) / GDP[GDP.length - 1];
 
         //Axes
-
         const xScale = d3.scaleTime()
             .domain([new Date("1947-01-01"), new Date("2015-07-01")])
             .range([40, w]);
@@ -57,9 +36,37 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
         
         const yAxis = d3.axisLeft()
             .scale(yScale);
+      
+      //Adding tooltip
+            let tooltip = d3
+                .select("body")
+                .append("div")
+                .attr("class", "tooltip")
+                .attr("id", "tooltip")
+                .style("opacity", 0);
+        
+         // Function to display year for tooltip
+         const years = (date) => {
+            let quarter = "";
+            let helper = date.substring(5, 7);
+            switch (helper) {
+                case "01":
+                    quarter = "Q1";
+                    break;
+                case "04":
+                    quarter = "Q2";
+                    break;
+                case "07":
+                    quarter = "Q3";
+                    break;
+                case "10":
+                    quarter = "Q4";
+                    break;
+            }
+            return quarter + ' ' + date.substring(0, 4);
+        }
         
         // Drawing chart
-
         const visual = d3.select("#visHolder")
             .append("svg")
             .attr("width", w)
@@ -85,19 +92,27 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .attr("y", (d, i) => {
                 return (h - 20) - d[1] * scale;
             })
-            //Adding tooltip
-            .append("title")
-            .attr("id", "tooltip")
-            .attr('data-date', (d, i) => {
-                return dataset[i][0];
-            })
-            .text((d, i) => {
-                return `$${d[1].toFixed(1)} Billion\n${years[i]}`
-            });
 
-        
+            //Displaying tooltip
+            .on("mouseover", (d, dataPoint) => {
+            tooltip
+                .transition()
+                .duration(200)
+                .style("opacity", 0.9);
+            tooltip
+                .html(years(dataPoint[0]) + " $" + dataPoint[1].toFixed(1))
+                .style("left", d.pageX + 20 + "px")
+                .style("top", d.pageY + 20 + "px");
+                tooltip.attr("data-date", dataPoint[0]);
+        })
+        .on("mouseout", (d) => {
+            tooltip
+                .transition()
+                .duration(400)
+                .style("opacity", 0);
+        });
+      
         // Calling axes
-
         const axisB = d3.select("svg")
             .append("g")
             .call(xAxis)
@@ -107,4 +122,12 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .append("g")
             .call(yAxis)
             .attr('id', 'y-axis');
+        
+        // Adding text
+        d3.select("svg")
+            .append("text")
+            .attr('transform', 'rotate(-90)')
+            .attr('x', -290)
+            .attr('y', 60)
+            .text('US Gross Domestic Product, 1947-2015');
     });

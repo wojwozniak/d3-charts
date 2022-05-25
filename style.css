@@ -49,3 +49,21 @@ body, html {
     transform: translate(40px, 0);
     z-index:10;
 }
+
+.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 60px;					
+    height: auto;					
+    padding: 2px;				
+    font-size: 12px;	
+    background: lavender;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+a {
+    color: darkgoldenrod;
+    text-decoration: none;
+}
