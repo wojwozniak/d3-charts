@@ -33,3 +33,13 @@ body, html {
     justify-content: center;
 
 }
+
+#x-axis {
+    transform: translate(0, 310px);
+    z-index: 10;
+ }
+ 
+ #y-axis {
+     transform: translate(40px, 0);
+     z-index: 10;
+ }
