@@ -55,3 +55,7 @@ body, html {
     border-radius: 8px;			
     pointer-events: none;			
 }
+
+.legend-item {
+    font-size: 12px;
+}

@@ -103,7 +103,7 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .call(yAxis)
             .attr('id', 'y-axis');
         
-        // Adding legend
+        // Adding label
         const about = d3
             .select("svg")
             .append("text")
@@ -112,5 +112,52 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .attr("transform", 'rotate(-90)')
             .text(`Time in minutes and seconds`);
         
-
-    });
+        // Adding legend
+        const renderLegend = () => {
+            const legend = d3
+                .select("svg")
+                .append("text")
+                .attr("x", w - 64)
+                .attr("y", 90)
+                .attr("id", "legend")
+                .text("Legend")
+        
+            const square1 = d3
+                .select("svg")
+                .append("rect")
+                .attr("x", w - 194)
+                .attr("y", 100)
+                .attr("height", 12)
+                .attr("width", 12)
+                .attr("fill", "red")
+                .attr("class", "legend-item");
+            
+            const square2 = d3
+                .select("svg")
+                .append("rect")
+                .attr("x", w - 213)
+                .attr("y", 120)
+                .attr("height", 12)
+                .attr("width", 12)
+                .attr("fill", "blue")
+                .attr("class", "legend-item");
+            
+            const text1 = d3
+                .select("svg")
+                .append("text")
+                .attr("x", w - 178)
+                .attr("y", 110)
+                .text("Riders with doping allegations")
+                .attr("class", "legend-item");
+            
+            const text2 = d3
+                .select("svg")
+                .append("text")
+                .attr("x", w - 197)
+                .attr("y", 130)
+                .text("Riders without doping allegations")
+                .attr("class", "legend-item");
+        }
+        renderLegend();
+    }
+);
