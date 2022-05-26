@@ -8,9 +8,9 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
         const w = 760;
         const h = 330;
 
-         //Axes
-         const xScale = d3.scaleLinear()
-            .domain([new Date("1994-01-01"), new Date("2015-01-01")])
+        // X axis
+        const xScale = d3.scaleTime()
+            .domain([new Date("1993-01-01"), new Date("2016-01-01")])
             .range([40, w-20]);
      
         const xAxis = d3.axisBottom()
@@ -18,16 +18,24 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .tickFormat(d3.timeFormat("%Y"))
             .tickSize(5);
         
+        // Data for Y Axis scale
+        let lower = new Date(1970, 0, 1);
+        let higher = new Date(1970, 0, 1);
+        lower.setSeconds(2200);
+        higher.setSeconds(2400);
+        
+        // Y axis
         const yScale = d3.scaleLinear()
-            .domain([2210, 2390])
-            .range([h - 20, 10]);
+            .domain([higher, lower])
+            .range([h - 30, 10]);
         
         
         const yAxis = d3.axisLeft()
+            .tickFormat(d3.timeFormat("%M:%S"))
             .scale(yScale);
-      
-
-
+        
+        
+        // Display
         const visual = d3.select("#visHolder")
             .append("svg")
             .attr("width", w)
@@ -39,11 +47,24 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .attr("cx", (d) => {
                 return xScale(new Date(d.Year, 1, 1));
             })
-            .attr("cy", (d) => {
-                console.log(yScale(d.Seconds));
-                return yScale(d.Seconds);
+            .attr("data-xvalue", (d, i) => {
+                return data[i].Year;
             })
-            .attr("r", 5);
+            .attr("cy", (d, i) => {
+                let y = new Date(1970, 0, 1);
+                y.setSeconds(data[i].Seconds);
+                return yScale(y);
+            })
+            .attr("data-yvalue", (d, i) => {
+                let y = new Date(1970, 0, 1);
+                y.setSeconds(data[i].Seconds);
+                return y;
+            })
+            .attr("r", 6)
+            .style("fill", (d) =>
+                d.Doping === "" ? "blue" : "red")
+            .attr("class", "dot");
+        
         
         // Calling axes
         const axisB = d3.select("svg")
@@ -55,4 +76,7 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .append("g")
             .call(yAxis)
             .attr('id', 'y-axis');
+        
+
+   
     });

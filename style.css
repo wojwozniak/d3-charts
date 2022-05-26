@@ -25,9 +25,8 @@ body, html {
 
 #visHolder {
     background-color: white;
-    width: 70%;
-    min-height: 400px;
-    min-width: 800px;
+    width: 760px;
+    height: 330px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,7 +34,7 @@ body, html {
 }
 
 #x-axis {
-    transform: translate(0, 310px);
+    transform: translate(0, 300px);
     z-index: 10;
  }
  
