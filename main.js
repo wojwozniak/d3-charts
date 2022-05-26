@@ -11,7 +11,7 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
         // X axis
         const xScale = d3.scaleTime()
             .domain([new Date("1993-01-01"), new Date("2016-01-01")])
-            .range([40, w-20]);
+            .range([40, w - 20]);
      
         const xAxis = d3.axisBottom()
             .scale(xScale)
@@ -41,8 +41,7 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .attr("class", "tooltip")
             .attr("id", "tooltip")
             .style("opacity", 0);
-        
-        
+           
         // Display
         const visual = d3.select("#visHolder")
             .append("svg")
@@ -74,26 +73,24 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .style("stroke", "black")
             .attr("class", "dot")
         
-        //Displaying tooltip
-        .on("mouseover", (d, dataPoint) => {
-            tooltip
-                .transition()
-                .duration(200)
-                .style("opacity", 0.9);
-            tooltip
-                .html(`${dataPoint.Name}, ${dataPoint.Nationality}, ${dataPoint.Year} with ${dataPoint.Time} \n ${dataPoint.Doping}`)
-                .style("left", d.pageX + 10 + "px")
-                .style("top", d.pageY + 10 + "px");
+            //Displaying tooltip
+            .on("mouseover", (d, dataPoint) => {
+                tooltip
+                    .transition()
+                    .duration(200)
+                    .style("opacity", 0.9);
+                tooltip
+                    .html(`${dataPoint.Name}, ${dataPoint.Nationality}, ${dataPoint.Year} with ${dataPoint.Time} \n ${dataPoint.Doping}`)
+                    .style("left", d.pageX + 10 + "px")
+                    .style("top", d.pageY + 10 + "px");
                 tooltip.attr("data-year", dataPoint.Year);
-        })
-        .on("mouseout", (d) => {
-            tooltip
-                .transition()
-                .duration(400)
-                .style("opacity", 0);
-        });
-        
-        
+            })
+            .on("mouseout", (d) => {
+                tooltip
+                    .transition()
+                    .duration(400)
+                    .style("opacity", 0);
+            });
         
         // Calling axes
         const axisB = d3.select("svg")
@@ -106,6 +103,14 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .call(yAxis)
             .attr('id', 'y-axis');
         
-        //Adding legend
+        // Adding legend
+        const about = d3
+            .select("svg")
+            .append("text")
+            .attr("x", -263)
+            .attr("y", 56)
+            .attr("transform", 'rotate(-90)')
+            .text(`Time in minutes and seconds`);
+        
 
     });
