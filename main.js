@@ -34,6 +34,14 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .tickFormat(d3.timeFormat("%M:%S"))
             .scale(yScale);
         
+        //Adding tooltip
+        let tooltip = d3
+            .select("body")
+            .append("div")
+            .attr("class", "tooltip")
+            .attr("id", "tooltip")
+            .style("opacity", 0);
+        
         
         // Display
         const visual = d3.select("#visHolder")
@@ -63,7 +71,28 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .attr("r", 6)
             .style("fill", (d) =>
                 d.Doping === "" ? "blue" : "red")
-            .attr("class", "dot");
+            .style("stroke", "black")
+            .attr("class", "dot")
+        
+        //Displaying tooltip
+        .on("mouseover", (d, dataPoint) => {
+            tooltip
+                .transition()
+                .duration(200)
+                .style("opacity", 0.9);
+            tooltip
+                .html(`${dataPoint.Name}, ${dataPoint.Nationality}, ${dataPoint.Year} with ${dataPoint.Time} \n ${dataPoint.Doping}`)
+                .style("left", d.pageX + 10 + "px")
+                .style("top", d.pageY + 10 + "px");
+                tooltip.attr("data-year", dataPoint.Year);
+        })
+        .on("mouseout", (d) => {
+            tooltip
+                .transition()
+                .duration(400)
+                .style("opacity", 0);
+        });
+        
         
         
         // Calling axes
@@ -77,6 +106,6 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .call(yAxis)
             .attr('id', 'y-axis');
         
+        //Adding legend
 
-   
     });
