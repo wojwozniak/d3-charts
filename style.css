@@ -9,6 +9,16 @@ body, html {
     
 }
 
+#title {
+    padding-top: 25px;
+    padding: 8px;
+    margin-bottom: 0;
+}
+
+h3 {
+    margin: 0;
+}
+
 #root {
     width: 100%;
     min-height: 100%;
@@ -16,18 +26,16 @@ body, html {
     flex-direction: column;
     text-align: center;
     align-items: center;
-}
-
-#title {
-    padding-top: 10%;
+    background-color: whitesmoke;
 }
 
 #visHolder {
     background-color: white;
-    width: 70%;
-    min-height: 400px;
-    min-width: 800px;
+    width: 760px;
+    height: 330px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 50px;
+
 }
