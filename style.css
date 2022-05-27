@@ -33,8 +33,7 @@ h3 {
 #visHolder {
     text-align: center;
     background-color: white;
-    max-width: 100%;
-    min-width: 90%;
+    width: auto;
     min-height: 530px;
     display: inline-block;
     justify-content: center;
@@ -51,6 +50,6 @@ svg {
  }
 
 #y-axis {
-    transform: translate(40px, 0);
+    transform: translate(70px, 0);
     z-index: 10;
  }

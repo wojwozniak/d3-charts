@@ -8,7 +8,7 @@ let response = d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectRe
         console.log(dataset);
 
         // Chart constants
-        const w = 1380;
+        const w = 1450;
         const h = 530;
         const barHeight = 33;
         const barWidth = 5;
@@ -40,8 +40,8 @@ let response = d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectRe
 
         // X axis
         const xScale = d3.scaleTime()
-            .domain([new Date("1753-01-01"), new Date("2015-01-01")])
-            .range([40, w - 20]);
+            .domain([new Date("1753-01-01"), new Date("2015-09-01")])
+            .range([70, 70+(2015-1752)*barWidth]);
         
         const xAxis = d3.axisBottom()
             .scale(xScale)
@@ -79,7 +79,7 @@ let response = d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectRe
             .attr("width", 5)
             .attr("height", 34)
             .attr("x", (d, i) => {
-                return 40 + (d.year - 1752) * barWidth;
+                return 65 + (d.year - 1752) * barWidth;
             })
             .attr("y", (d) => {
                 return d.month * barHeight;
