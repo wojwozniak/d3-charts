@@ -6,6 +6,7 @@ body, html {
     padding: 0;
     border: 0;
     font-family: 'Open Sans';
+    text-align: center;
     
 }
 
@@ -30,12 +31,16 @@ h3 {
 }
 
 #visHolder {
+    text-align: center;
     background-color: white;
-    width: 760px;
-    height: 330px;
-    display: flex;
-    align-items: center;
+    max-width: 95%;
+    min-width: 80%;
+    min-height: 330px;
+    display: inline-block;
     justify-content: center;
     margin: 50px;
+}
 
+svg {
+    margin-top: 10px;
 }
