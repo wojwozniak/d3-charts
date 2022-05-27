@@ -1,6 +1,3 @@
-// Color scale from darkest to brightest
-const colorScale = ["#313695", "#717AB9", "#ABD9E9", "#E0F3F8", "#FFFFBF", "#FEE090", "#FBAD61", "#FDAE61", "#D53028"]
-
 // API response
 let response = d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/global-temperature.json")
     .then((data) => {
@@ -12,6 +9,9 @@ let response = d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectRe
         const h = 530;
         const barHeight = 33;
         const barWidth = 5;
+
+        // Color scale from darkest to brightest
+        const colorScale = ["#313695", "#717AB9", "#ABD9E9", "#E0F3F8", "#FFFFBF", "#FEE090", "#FBAD61", "#FDAE61", "#D53028"];
 
         // Calculating color to display
         let variances = [];
@@ -65,6 +65,17 @@ let response = d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectRe
             })
             .tickSize(10);
         
+         //Adding tooltip
+         let tooltip = d3
+            .select("body")
+            .append("div")
+            .attr("class", "tooltip")
+            .attr("id", "tooltip")
+            .style("opacity", 0);
+        
+        
+        //Month names for tooltip
+        const monthNames = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         
         // Displaying chart
         const visual = d3.select("#visHolder")
@@ -94,6 +105,26 @@ let response = d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectRe
                 return d.variance;
             })
             .style("fill", (d, i) => colors[i])
+
+            //Displaying tooltip
+            .on("mouseover", (d, dataPoint) => {
+                tooltip
+                    .transition()
+                    .duration(200)
+                    .style("opacity", 0.9);
+                tooltip
+                    .html(`${monthNames[dataPoint.month-1]} ${dataPoint.year} -
+                    ${(dataPoint.variance + 8.66).toFixed(2)} ( ${dataPoint.variance.toFixed(2)} variance)`)
+                    .style("left", d.pageX + 10 + "px")
+                    .style("top", d.pageY + 10 + "px");
+                tooltip.attr("data-year", dataPoint.year);
+            })
+            .on("mouseout", (d) => {
+                tooltip
+                    .transition()
+                    .duration(400)
+                    .style("opacity", 0);
+            });
         
         
         // Calling axes
