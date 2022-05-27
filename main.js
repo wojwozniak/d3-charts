@@ -2,7 +2,7 @@
 let response = d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/global-temperature.json")
     .then((data) => {
         const dataset = data.monthlyVariance;
-        console.log(dataset);
+        //console.log(dataset);
 
         // Chart constants
         const w = 1450;
@@ -11,7 +11,7 @@ let response = d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectRe
         const barWidth = 5;
 
         // Color scale from darkest to brightest
-        const colorScale = ["#313695", "#717AB9", "#ABD9E9", "#E0F3F8", "#FFFFBF", "#FEE090", "#FBAD61", "#FDAE61", "#D53028"];
+        const colorScale = ["#313695", "#717AB9", "#ABD9E9", "#E0F3F8", "#FFFFBF", "#FEE090", "#FDAE61","#DD8E25" , "#D53028"];
 
         // Calculating color to display
         let variances = [];
@@ -138,5 +138,30 @@ let response = d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectRe
             .call(yAxis)
             .attr("id", "y-axis");
         
+        // Adding legend
+        const renderLegend = () => {
+
+            // Legend scale variable
+            legendScale = 20;
+      
+            // Visual
+            const legend = d3
+                .select("svg")
+                .append("g")
+                .attr("id", "legend")
+                .selectAll("rect")
+                .data(colorScale)
+                .enter()
+                .append("rect")
+                .attr("height", legendScale)
+                .attr("width", legendScale)
+                .style('fill', (d) => d)
+                .attr("y", h - 50)
+                .attr("x", (d, i) => {
+                    return 80 + i * legendScale;
+                });    
+            
+        }
+        renderLegend();
     }
 );
