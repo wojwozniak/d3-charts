@@ -30,13 +30,15 @@ h3 {
 }
 
 #visHolder {
+    text-align: center;
     background-color: white;
-    width: 760px;
-    height: 330px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: auto;
+    min-height: 330px;
+    display: inline-block;
     margin: 50px;
+    margin-bottom: 10px;
+    width: 96%;
+    margin: 30px;
 
 }
 
@@ -53,7 +55,7 @@ h3 {
  .tooltip {	
     position: absolute;			
     text-align: center;			
-    width: 220px;					
+    width: 160px;					
     height: auto;					
     padding: 2px;				
     font-size: 12px;	
@@ -65,4 +67,21 @@ h3 {
 
 .legend-item {
     font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: goldenrod;
+}
+
+#legend {
+    font-size: 16px;
+}
+
+#axis-text {
+    font-size: 16px;
+}
+
+svg {
+    transform: scale(0.9);
 }

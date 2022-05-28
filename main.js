@@ -80,7 +80,7 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
                     .duration(200)
                     .style("opacity", 0.9);
                 tooltip
-                    .html(`${dataPoint.Name}, ${dataPoint.Nationality}, ${dataPoint.Year} with ${dataPoint.Time} \n ${dataPoint.Doping}`)
+                    .html(`<b>${dataPoint.Name}</b><br> ${dataPoint.Nationality}, ${dataPoint.Year} with <b>${dataPoint.Time}</b> <br> ${dataPoint.Doping}`)
                     .style("left", d.pageX + 10 + "px")
                     .style("top", d.pageY + 10 + "px");
                 tooltip.attr("data-year", dataPoint.Year);
@@ -109,6 +109,7 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
             .append("text")
             .attr("x", -263)
             .attr("y", 56)
+            .attr("id", "axis-text")
             .attr("transform", 'rotate(-90)')
             .text(`Time in minutes and seconds`);
         
