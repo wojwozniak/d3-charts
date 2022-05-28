@@ -31,12 +31,12 @@ h3 {
 
 #visHolder {
     text-align: center;
-    width: fit-content;
     background-color: white;
     min-height: 530px;
     display: inline-block;
     margin: 50px;
     margin-bottom: 10px;
+    width: 90%;
 }
 
 svg {
