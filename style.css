@@ -24,13 +24,16 @@ body, html {
 }
 
 #visHolder {
+    text-align: center;
     background-color: white;
-    width: 70%;
-    min-height: 400px;
-    min-width: 800px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: auto;
+    min-height: 340px;
+    display: inline-block;
+    margin: 50px;
+    margin-bottom: 10px;
+    width: 96%;
+    margin: 30px;
+
 }
 
 .bar {
@@ -71,4 +74,8 @@ a {
 
 #legend {
     font-size: 16px;
+}
+
+svg {
+    transform: scale(0.9);
 }
