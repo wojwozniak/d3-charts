@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); 
+
+body, html {
+    background-color: whitesmoke;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: 'Open Sans';
+    
+}
+
+#root {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+#title {
+    padding-top: 10%;
+}
+
+#visHolder {
+    background-color: white;
+    width: 70%;
+    min-height: 400px;
+    min-width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bar {
+    fill: blue;
+}
+
+.bar:hover {
+    fill: gray;
+}
+
+#x-axis {
+   transform: translate(0, 300px);
+   z-index: 10;
+}
+
+#y-axis {
+    transform: translate(40px, 0);
+    z-index:10;
+}
+
+.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 60px;					
+    height: auto;					
+    padding: 2px;				
+    font-size: 12px;	
+    background: lavender;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+a {
+    color: darkgoldenrod;
+    text-decoration: none;
+}
