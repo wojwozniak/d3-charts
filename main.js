@@ -19,21 +19,21 @@ let response = d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectRe
             variances.push(dataset[i].variance);
         }
         let colors = variances.map((v) => {
-            if (v < -1.800) {
+            if (v < -3.5) {
                 return colorScale[0];
-            } else if (v < -1.275) {
+            } else if (v < -2.5) {
                 return colorScale[1];
-            } else if (v < -0.750) {
+            } else if (v < -1.5) {
                 return colorScale[2];
-            } else if (v < -0.225) {
+            } else if (v < -0.5) {
                 return colorScale[3];
-            } else if (v < 0.225) {
+            } else if (v < 0.5) {
                 return colorScale[4];
-            } else if (v < 0.750) {
+            } else if (v < 1.5) {
                 return colorScale[5];
-            } else if (v < 1.275) {
+            } else if (v < 2.5) {
                 return colorScale[6];
-            } else if (v < 1.800) {
+            } else if (v < 3.5) {
                 return colorScale[7];
             } else return colorScale[8];
         });
@@ -144,6 +144,15 @@ let response = d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectRe
             // Legend scale variable
             legendScale = 20;
       
+            // Axis
+            const lScale = d3.scaleLinear()
+                .domain([4.3, 13.3])
+                .range([80, 80 + 9 * legendScale])
+            
+            const lAxis = d3.axisBottom()
+                .scale(lScale)
+                .tickValues([5.3, 6.3, 7.3, 8.3, 9.3, 10.3, 11.3, 12.3]);
+
             // Visual
             const legend = d3
                 .select("svg")
@@ -159,7 +168,20 @@ let response = d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectRe
                 .attr("y", h - 50)
                 .attr("x", (d, i) => {
                     return 80 + i * legendScale;
-                });    
+                });
+            
+            const title = d3.select("svg")
+                .append("text")
+                .text("Temperature scale [°C]")
+                .attr("x", 80)
+                .attr("y", h-60)
+                ;
+            
+            // Call scale
+            const axisLegend = d3.select("svg")
+                .append("g")
+                .call(lAxis)
+                .attr("id", "l-axis");
             
         }
         renderLegend();
