@@ -101,7 +101,7 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
                 .duration(200)
                 .style("opacity", 0.9);
             tooltip
-                .html(years(dataPoint[0]) + " $" + dataPoint[1].toFixed(1))
+                .html(`${years(dataPoint[0])}<br>${dataPoint[1].toFixed(1)} Billion USD`)
                 .style("left", d.pageX + 20 + "px")
                 .style("top", d.pageY + 20 + "px");
                 tooltip.attr("data-date", dataPoint[0]);
