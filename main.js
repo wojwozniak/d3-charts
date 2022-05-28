@@ -13,16 +13,16 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
         });
 
         // Chart constants
-        const w = 740;
-        const h = 320;
+        const w = 760;
+        const h = 340;
         const padding = 1;
         const width = (700 - 274) / 275;
-        const scale = (h - 20) / GDP[GDP.length - 1];
+        const scale = (h - 40) / GDP[GDP.length - 1];
 
         //Axes
         const xScale = d3.scaleTime()
             .domain([new Date("1947-01-01"), new Date("2015-07-01")])
-            .range([40, w]);
+            .range([40, w-20]);
         
         const xAxis = d3.axisBottom()
             .scale(xScale)
@@ -31,11 +31,12 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
         
         const yScale = d3.scaleLinear()
             .domain([0, GDP[GDP.length - 1]])
-            .range([h - 20, 0]);
+            .range([h - 20, 20]);
         
         
         const yAxis = d3.axisLeft()
-            .scale(yScale);
+            .scale(yScale)
+            .tickValues([300, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000]);
       
       //Adding tooltip
             let tooltip = d3
@@ -126,8 +127,9 @@ let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectRe
         // Adding text
         d3.select("svg")
             .append("text")
+            .attr("id", "legend")
             .attr('transform', 'rotate(-90)')
             .attr('x', -290)
             .attr('y', 60)
-            .text('US Gross Domestic Product, 1947-2015');
+            .text('US GDP, 1947-2015, Billions USD');
     });
