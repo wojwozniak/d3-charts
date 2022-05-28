@@ -1,4 +1,5 @@
-# d3-barchart
+# D3 Barchart
 This is first one out of five freeCodeCamp D3js&amp;API Certification Projects.  
 I used HTML, CSS, JS and D3js library to create a barchart representing United States GDP from 1947 to 2015.  
-You can check it out [here](https://wojwozniak.github.io/d3-barchart/)
+You can check it out [here](https://wojwozniak.github.io/d3-barchart/)  
+[Data source](https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json)
