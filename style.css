@@ -36,11 +36,13 @@ h3 {
     display: inline-block;
     margin: 50px;
     margin-bottom: 10px;
-    width: 98%;
+    width: 96%;
+    margin: 30px;
 }
 
 svg {
     margin-top: 10px;
+    transform: scale(0.9);
 }
 
 #x-axis {
