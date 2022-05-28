@@ -113,8 +113,7 @@ let response = d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectRe
                     .duration(200)
                     .style("opacity", 0.9);
                 tooltip
-                    .html(`${monthNames[dataPoint.month-1]} ${dataPoint.year} -
-                    ${(dataPoint.variance + 8.66).toFixed(2)} ( ${dataPoint.variance.toFixed(2)} variance)`)
+                    .html(`${monthNames[dataPoint.month-1]} ${dataPoint.year}<br><b>${(dataPoint.variance + 8.66).toFixed(2)}°C</b><br>${dataPoint.variance.toFixed(2)}°C`)
                     .style("left", d.pageX + 10 + "px")
                     .style("top", d.pageY + 10 + "px");
                 tooltip.attr("data-year", dataPoint.year);
