@@ -12,6 +12,19 @@ Promise.all([d3.json(COUNTY_LINK), d3.json(EDUCATION_LINK)])
   
 
 function renderChart(counties, education) {
+    
+    // Logging data
     console.log(counties);
     console.log(education);
+
+    // Chart constants
+    const w = 600;
+    const h = 440;
+
+
+    const visual = d3.select("#visHolder")
+        .append("svg")
+        .attr("width", w)
+        .attr("height, h")
+    
 }
