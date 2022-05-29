@@ -20,6 +20,11 @@ body, html {
 
 #title {
     padding-top: 10%;
+    margin-bottom: 5px;
+}
+
+#description {
+    margin-bottom: 15px;
 }
 
 #visHolder {
@@ -66,4 +71,12 @@ body, html {
 a {
     color: darkgoldenrod;
     text-decoration: none;
+}
+
+#subtitle {
+    margin-top: 20px;
+}
+
+p {
+    margin: 4px;
 }
