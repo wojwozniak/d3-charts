@@ -76,6 +76,9 @@ svg {
     transform: scale(0.9);
 }
 
+#subtitle {
+    margin-top: 20px;
+}
 
 p {
     margin: 4px;
