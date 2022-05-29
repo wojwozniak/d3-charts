@@ -10,7 +10,6 @@ body, html {
 }
 
 #root {
-    width: 100%;
     min-height: 100%;
     display: flex;
     flex-direction: column;
@@ -31,9 +30,8 @@ body, html {
     display: inline-block;
     margin: 50px;
     margin-bottom: 10px;
-    width: 96%;
     margin: 30px;
-
+    padding-left: 0px;
 }
 
 .bar {
@@ -78,4 +76,8 @@ a {
 
 svg {
     transform: scale(0.9);
+}
+
+p {
+    margin: 4px;
 }
