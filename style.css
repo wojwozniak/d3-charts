@@ -23,15 +23,12 @@ body, html {
 }
 
 #visHolder {
-    text-align: center;
     background-color: white;
-    height: auto;
     min-height: 340px;
-    display: inline-block;
-    margin: 50px;
     margin-bottom: 10px;
     margin: 30px;
-    padding-left: 0px;
+    width: fit-content;
+    margin: auto;
 }
 
 .bar {
@@ -75,8 +72,10 @@ a {
 }
 
 svg {
+    margin-top: 10px;
     transform: scale(0.9);
 }
+
 
 p {
     margin: 4px;
