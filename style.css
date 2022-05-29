@@ -22,27 +22,31 @@ h3 {
 
 #root {
     min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
     background-color: whitesmoke;
 }
 
 #visHolder {
-    text-align: center;
+    text-align: left;
+    display: flex;
+    justify-content: left;
     background-color: white;
     min-height: 530px;
-    display: inline-block;
-    margin: 50px;
     margin-bottom: 10px;
-    width: 96%;
     margin: 30px;
+    width: fit-content;
 }
 
 svg {
     margin-top: 10px;
     transform: scale(0.9);
+}
+
+@media screen and (max-width: 1250px) {
+    svg {
+        margin-left: -125px;
+        margin-right: -125px;
+    }
+    
 }
 
 #x-axis {
