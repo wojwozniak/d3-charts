@@ -18,22 +18,25 @@ body, html {
 
 h3 {
     margin: 0;
+    margin-bottom: 15px;
 }
 
 #root {
     min-height: 100%;
     background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #visHolder {
-    text-align: left;
-    display: flex;
-    justify-content: left;
     background-color: white;
     min-height: 530px;
     margin-bottom: 10px;
     margin: 30px;
     width: fit-content;
+    margin: auto;
 }
 
 svg {
