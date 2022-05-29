@@ -28,6 +28,7 @@ h3 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 #visHolder {
@@ -92,4 +93,12 @@ a {
 
 svg {
     transform: scale(0.8);
+}
+
+#subtitle {
+    margin-top: 20px;
+}
+
+p {
+    margin: 4px;
 }
