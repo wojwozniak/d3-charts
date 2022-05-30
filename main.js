@@ -9,6 +9,10 @@ const COUNTY_LINK = 'https://raw.githubusercontent.com/no-stack-dub-sack/testabl
 Promise.all([d3.json(COUNTY_LINK), d3.json(EDUCATION_LINK)])
     .then((data) => renderChart(data[0], data[1]))
     .catch((err) => console.log(err));
+
+
+const svg = d3.select("svg");
+const path = d3.geoPath();
   
 
 function renderChart(counties, education) {
@@ -17,14 +21,17 @@ function renderChart(counties, education) {
     console.log(counties);
     console.log(education);
 
-    // Chart constants
-    const w = 600;
-    const h = 440;
 
+    svg
+        .append("g")
+        .attr("class", "counties")
+        .selectAll("path")
+        .data(topojson.feature(counties, counties.objects.counties).features)
+        .enter()
+        .append("path")
+        .attr("class", "county")
+        .attr("fill", "black")
+        .attr("d", path);
 
-    const visual = d3.select("#visHolder")
-        .append("svg")
-        .attr("width", w)
-        .attr("height, h")
     
 }
