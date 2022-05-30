@@ -74,3 +74,22 @@ p {
 .county:hover {
     stroke: black;
 }
+
+#l-axis {
+    z-index: 10;
+    transform: translate(0, 20px);
+}
+
+#l-axis path {
+    stroke-width: 0px;
+}
+#l-axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+  stroke-width: 2px;
+}
+
+#legend {
+    font-size: 15px;
+}

@@ -24,7 +24,7 @@ function renderChart(us, education) {
     console.log(education);
 
     // Colour scale and colour picker
-    const COLOR_SCALE = ["#1E90FF", "#187DE9", "#126AD2", "#0C56BC", "0643A5", "00308F"];
+    const COLOR_SCALE = ["#1E90FF", "#187DE9", "#126AD2", "#0C56BC", "#0643A5", "#00308F"];
     function setColour(score) {
         if (score > 63) {
             return COLOR_SCALE[5];
@@ -110,5 +110,52 @@ function renderChart(us, education) {
                 .style("opacity", 0);
         });
     
-    
+    // Max 75.1
+    // Min 2.6
+    const renderLegend = () => {
+
+        const legendScale = 30;
+
+        // Axis
+        const lScale = d3.scaleLinear()
+            .domain([2.6, 75.1])
+            .range([620, 620 + 6*legendScale])
+        
+        const lAxis = d3.axisBottom()
+            .scale(lScale)
+            .tickSize(legendScale)
+            .tickValues([15, 27, 39, 51, 63]);
+        
+        const legend = d3
+            .select("svg")
+            .append("g")
+            .attr("id", "legend")
+            .selectAll("rect")
+            .data(COLOR_SCALE)
+            .enter()
+            .append("rect")
+            .attr("height", legendScale)
+            .attr("width", legendScale)
+            .style('fill', (d) => d)
+            .attr("y", 20)
+            .attr("x", (d, i) => {
+                return 620 + i * legendScale;
+            });
+
+        const title = d3.select("svg")
+                .append("text")
+                .text("Color scale")
+                .attr("x", 620)
+                .attr("y", 13);
+            
+        // Call scale
+        const axisLegend = d3.select("svg")
+            .append("g")
+            .call(lAxis)
+            .attr("id", "l-axis")
+            .style("font-size", "15px");
+            
+    }
+    renderLegend();
+ 
 }
