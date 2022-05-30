@@ -6,71 +6,60 @@ body, html {
     padding: 0;
     border: 0;
     font-family: 'Open Sans';
+    text-align: center;
     
 }
 
+#title {
+    padding-top: 25px;
+    padding: 8px;
+    margin-bottom: 0;
+}
+
+h3 {
+    margin: 0;
+    margin-bottom: 15px;
+}
+
 #root {
-    width: 100%;
     min-height: 100%;
+    background-color: whitesmoke;
     display: flex;
     flex-direction: column;
-    text-align: center;
+    justify-content: center;
     align-items: center;
-}
-
-#title {
-    padding-top: 10%;
-    margin-bottom: 5px;
-}
-
-#description {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 #visHolder {
     background-color: white;
-    width: 70%;
-    min-height: 400px;
-    min-width: 800px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 530px;
+    margin-bottom: 10px;
+    margin: 30px;
+    width: fit-content;
+    margin: auto;
 }
 
-.bar {
-    fill: blue;
-}
-
-.bar:hover {
-    fill: gray;
-}
-
-#x-axis {
-   transform: translate(0, 300px);
-   z-index: 10;
-}
-
-#y-axis {
-    transform: translate(40px, 0);
-    z-index:10;
-}
-
-.tooltip {	
+ .tooltip {	
     position: absolute;			
     text-align: center;			
-    width: 60px;					
+    width: 80px;					
     height: auto;					
     padding: 2px;				
-    font-size: 12px;	
+    font-size: 13px;	
     background: lavender;	
-    border: 0px;		
+    border: solid 1px black;		
     border-radius: 8px;			
     pointer-events: none;			
 }
 
 a {
-    color: darkgoldenrod;
     text-decoration: none;
+    color: goldenrod;
+}
+
+svg {
+    transform: scale(0.8);
 }
 
 #subtitle {
