@@ -22,19 +22,8 @@ function renderChart(us, education) {
     // Logging data
     console.log(us);
     console.log(education);
-    let x = 100;
-    for (let i = 0; i < 3142; i++) {
-        
-        if (education[i].bachelorsOrHigher < x) {
-            x = education[i].bachelorsOrHigher;
-        }
-        
-    }
-    console.log(x);
 
-    // Max 75.1
-    // Min 2.6
-
+    // Colour scale and colour picker
     const COLOR_SCALE = ["#1E90FF", "#187DE9", "#126AD2", "#0C56BC", "0643A5", "00308F"];
     function setColour(score) {
         if (score > 63) {
@@ -52,7 +41,15 @@ function renderChart(us, education) {
         } else return COLOR_SCALE[0];
     }
 
-    // Render counties
+    //Adding tooltip
+    let tooltip = d3
+    .select("body")
+    .append("div")
+    .attr("class", "tooltip")
+    .attr("id", "tooltip")
+    .style("opacity", 0);
+
+    // Render chart
     svg
         .append("g")
         .attr("class", "counties")
@@ -78,6 +75,40 @@ function renderChart(us, education) {
             if (result[0]) {
                 return result[0].bachelorsOrHigher;
             } else return "No data :("
-    })
+        })
+    
+        //Displaying tooltip
+        .on("mouseover", (d, dataPoint) => {
+            tooltip
+                .transition()
+                .duration(200)
+                .style("opacity", 0.9);
+            tooltip
+                .html(() => {
+                    const help = education.filter((county) => {
+                        return county.fips === dataPoint.id;
+                    })
+                    if (help[0]) {
+                        return `${help[0].area_name}, <b>${help[0].state}</b><br><b>${help[0].bachelorsOrHigher}%</b> of population with Bachellors Degree or Higher`
+                    } else return `No data :(`
+                })
+                .attr("data-education", () => {
+                    const help = education.filter((county) => {
+                        return county.fips === dataPoint.id;
+                    })
+                    if (help[0]) {
+                        return help[0].bachelorsOrHigher;
+                    }
+                })
+                .style("left", d.pageX + 10 + "px")
+                .style("top", d.pageY + 10 + "px");
+        })
+        .on("mouseout", () => {
+            tooltip
+                .transition()
+                .duration(400)
+                .style("opacity", 0);
+        });
+    
     
 }
