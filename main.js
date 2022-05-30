@@ -18,10 +18,6 @@ Promise.all([d3.json(COUNTY_LINK), d3.json(EDUCATION_LINK)])
     
 // D3
 function renderChart(us, education) {
-    
-    // Logging data
-    console.log(us);
-    console.log(education);
 
     // Colour scale and colour picker
     const COLOR_SCALE = ["#1E90FF", "#187DE9", "#126AD2", "#0C56BC", "#0643A5", "#00308F"];
@@ -110,21 +106,26 @@ function renderChart(us, education) {
                 .style("opacity", 0);
         });
     
-    // Max 75.1
-    // Min 2.6
+    const state_borders = svg.append("path")
+        .attr("class", "state-borders")
+        .attr("d", path(
+          topojson.mesh(us, us.objects.states, (a, b) => a !== b)
+        ));
+
+    
     const renderLegend = () => {
 
         const legendScale = 30;
 
         // Axis
         const lScale = d3.scaleLinear()
-            .domain([2.6, 75.1])
+            .domain([3, 75])
             .range([620, 620 + 6*legendScale])
         
         const lAxis = d3.axisBottom()
             .scale(lScale)
             .tickSize(legendScale)
-            .tickValues([15, 27, 39, 51, 63]);
+            .tickValues([3, 15, 27, 39, 51, 63,75]);
         
         const legend = d3
             .select("svg")
