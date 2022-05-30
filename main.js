@@ -144,10 +144,11 @@ function renderChart(us, education) {
             });
 
         const title = d3.select("svg")
-                .append("text")
-                .text("Color scale")
-                .attr("x", 620)
-                .attr("y", 13);
+            .append("text")
+            .text("Color scale")
+            .attr("x", 620)
+            .attr("y", 13)
+            .attr("id", "legend-title");
             
         // Call scale
         const axisLegend = d3.select("svg")

@@ -35,10 +35,16 @@ h3 {
     background-color: white;
     min-height: 530px;
     margin-bottom: 10px;
-    margin: 30px;
     width: fit-content;
-    margin: auto;
     margin-top: 30px;
+    margin-left: 0px;
+    margin: auto;
+}
+
+@media screen and (min-width: 775px) {
+    #visHolder {
+        margin: 0;
+    }
 }
 
  .tooltip {	
@@ -74,6 +80,7 @@ p {
 .county:hover {
     stroke: black;
     fill: orangered;
+    stroke-width: 2px;
 }
 
 #l-axis {
@@ -86,13 +93,17 @@ p {
 }
 #l-axis line {
   fill: none;
-  stroke: #000;
+  stroke: #fff;
   shape-rendering: crispEdges;
-  stroke-width: 2px;
+  stroke-width: 1px;
 }
 
 #legend {
     font-size: 15px;
+}
+
+#legend-title {
+    font-weight: bold;
 }
 
 .state-borders {
@@ -102,5 +113,4 @@ p {
     stroke-linejoin: round;
     stroke-linecap: round;
     pointer-events: none;
-  }
-  
+}
