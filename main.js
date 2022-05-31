@@ -115,7 +115,7 @@ function renderChart(us, education) {
     
     const renderLegend = () => {
 
-        const legendScale = 30;
+        const legendScale = 40;
 
         // Axis
         const lScale = d3.scaleLinear()
@@ -135,10 +135,10 @@ function renderChart(us, education) {
             .data(COLOR_SCALE)
             .enter()
             .append("rect")
-            .attr("height", legendScale)
+            .attr("height", 30)
             .attr("width", legendScale)
             .style('fill', (d) => d)
-            .attr("y", 20)
+            .attr("y", 22)
             .attr("x", (d, i) => {
                 return 620 + i * legendScale;
             });
@@ -147,7 +147,7 @@ function renderChart(us, education) {
             .append("text")
             .text("Color scale")
             .attr("x", 620)
-            .attr("y", 13)
+            .attr("y", 15)
             .attr("id", "legend-title");
             
         // Call scale

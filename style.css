@@ -83,7 +83,7 @@ p {
 
 #l-axis {
     z-index: 10;
-    transform: translate(0, 20px);
+    transform: translate(0, 22px);
 }
 
 #l-axis path {
