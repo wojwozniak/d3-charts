@@ -92,6 +92,14 @@ p {
     margin: 4px;
 }
 
+.group:hover .tile {
+    fill: whitesmoke;
+}
+
+.group {
+    cursor: default;
+}
+
 #legend-title {
     font-size: 25px;
     font-weight: bold;
