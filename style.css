@@ -10,10 +10,24 @@ body, html {
     
 }
 
-#title {
+#link-container {
+    text-align: center;
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
     padding-top: 25px;
+}
+
+#link-container a {
+    cursor: pointer;
+}
+
+#title {
     padding: 8px;
-    margin-bottom: 0;
+    margin: 4px;
 }
 
 h3 {
