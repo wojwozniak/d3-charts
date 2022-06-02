@@ -39,7 +39,7 @@ const renderButtons = () => {
     kickstarter_link.textContent = "Kickstarter Chart";
 }
 
-// Color scale - from original FCC project
+// Color scale - code snippet from original FCC project
 const fader = (color) => d3.interpolateRgb(color, '#fff')(0.2);
 const color =  d3.scaleOrdinal().range(
     [
@@ -130,7 +130,7 @@ function renderChart(data) {
         .append('text')
         .attr('class', 'label')
         .selectAll('tspan')
-        //Regex making it work, snippet from main project
+        //Regex splitting text to make it fit, snippet from main FreeCodeCamp project
         .data((d) => d.data.name.split(/(?=[A-Z][^A-Z])/g))
         .enter()
         .append('tspan')
