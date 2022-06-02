@@ -96,7 +96,14 @@ function renderChart(data) {
     treemap(root);
     
     // Render group (which will contain rect and text)
-    const cell = svg
+    const visual = svg
+        .selectAll("g")
+        .data([0])
+        .enter()
+        .append("g")
+        .attr("id", "chart-items");
+    
+    const cell = visual
         .selectAll('g')
         .data(root.leaves())
         .enter()
@@ -155,6 +162,59 @@ function renderChart(data) {
                 .style("opacity", 0);
         });
     const renderLegend = () => {
+        // Legend constants
+        const legendScale = 30;
+
+        // Get categories for legend
+        const categories = data.children.map((i) => i.name);
+        console.log(categories);
+
+        //Create groups for legend
+        const legend = d3
+            .select("#chart")
+            .append("g")
+            .attr("id", "legend")
+            .selectAll("g")
+            .data(categories)
+            .enter()
+            .append("g")
+            .attr("class", "legend-itemo");
+        
+        // Render rects
+        const legendRects = d3
+            .selectAll(".legend-itemo")
+            .append("rect")
+            .attr("height", legendScale)
+            .attr("width", legendScale)
+            .style("fill", (d) => color(d))
+            .attr("y", (d, i) => {
+                return 562 + i % 4 * (legendScale + 5);
+            })
+            .attr("x", (d, i) => {
+                return 160 + Math.floor(i / 4) * (legendScale + 145);
+            })
+            .attr("class", "legend-item");
+        
+        // Render labels for rects
+        const legendLabels = d3
+            .selectAll(".legend-itemo")
+            .append("text")
+            .attr("y", (d, i) => {
+                return 562 + 2 * legendScale / 3 + i % 4 * (legendScale + 5);
+            })
+            .attr("x", (d, i) => {
+                return 156 + 4 * legendScale / 3 + Math.floor(i / 4) * (legendScale + 145);
+            })
+            .text((d) => d);
+        
+        // Render legend title
+        const legendTitle = visual
+            .append("text")
+            .attr("id", "legend-title")
+            .text("Legend")
+            .attr("x", 50)
+            .attr("y", 580);
+        
 
     }
     renderLegend();

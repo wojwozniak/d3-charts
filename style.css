@@ -59,7 +59,7 @@ svg {
 }
 
 .label {
-    font-size: 12px;
+    font-size: 0.8rem;
 }
 
  .tooltip {	
@@ -90,4 +90,9 @@ svg {
 
 p {
     margin: 4px;
+}
+
+#legend-title {
+    font-size: 25px;
+    font-weight: bold;
 }
