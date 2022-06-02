@@ -70,6 +70,14 @@ const color =  d3.scaleOrdinal().range(
 const treemap = d3.treemap().size([960, 500]);
 const svg = d3.select("svg");
 
+//Adding tooltip
+let tooltip = d3
+    .select("body")
+    .append("div")
+    .attr("class", "tooltip")
+    .attr("id", "tooltip")
+    .style("opacity", 0);
+
 // D3
 function renderChart(data) {
     // Clear data before rendering new chart
@@ -122,6 +130,34 @@ function renderChart(data) {
         .attr('x', 4)
         .attr('y', (d, i) => 13 + i * 10)
         .text((d) => d);
+    
+    //Display tooltip
+    cell
+        .on("mouseover", (d, dataPoint) => {
+            tooltip
+                .transition()
+                .duration(200)
+                .style("opacity", 0.9)
+                .attr("data-value", dataPoint.data.value);
+            tooltip
+                .html(() => {
+                    if (dataset === videogames) {
+                        return `${dataPoint.data.name}<br>Category: ${dataPoint.data.category}<br><b>${dataPoint.data.value} Million Copies Sold</b>`
+                    } else return `${dataPoint.data.name}<br>Category: ${dataPoint.data.category}<br><b>$${dataPoint.data.value}</b>`;
+                })
+                .style("left", d.pageX + 10 + "px")
+                .style("top", d.pageY + 10 + "px");
+        })
+        .on("mouseout", () => {
+            tooltip
+                .transition()
+                .duration(400)
+                .style("opacity", 0);
+        });
+    const renderLegend = () => {
+
+    }
+    renderLegend();
 }
 
 // Main function
