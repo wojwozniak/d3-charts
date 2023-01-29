@@ -17,7 +17,6 @@ export default {
   methods: {
     updateChart(i:string) {
       this.currentChart = i;
-      console.log(this.currentChart);
     }
   }
 }
@@ -34,15 +33,14 @@ export default {
         <a href="#" :value={i}  @click="updateChart(i)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" v-for="(i) in menuItems">{{i}}</a>
       </div>
     </transition>
-    <div class="min-h-[500px] h-3/5 w-4/5 min-w-[600px] border-2 flex flex-col justify-center  items-center">
-      <p v-if="currentChart == 'none'">Use menu in top right to pick chart to display</p>
-      <Barchart v-else-if="currentChart == 'Barchart'" />
-      <Choropleth v-else-if="currentChart == 'Choropleth'" />
-      <Heatmap v-else-if="currentChart == 'Heatmap'" />
-      <Scatterplot v-else-if="currentChart == 'Scatterplot'" />
-      <Treemap v-else-if="currentChart == 'Treemap'" />
+    <div v-if="currentChart == 'none'" class="flex flex-col justify-center items-center">
+      <p>Use menu in top right to pick chart to display</p>
+      <p class="mt-4">API data from freecodecamp.org</p>
     </div>
-    <p class="mt-2">Didn't work on responsiveness! Use PC!</p>
-    <p class="mt-4">API data from freecodecamp.org</p>
+    <Barchart v-else-if="currentChart == 'Barchart'" />
+    <Choropleth v-else-if="currentChart == 'Choropleth'" />
+    <Heatmap v-else-if="currentChart == 'Heatmap'" />
+    <Scatterplot v-else-if="currentChart == 'Scatterplot'" />
+    <Treemap v-else-if="currentChart == 'Treemap'" />
   </div>
 </template>

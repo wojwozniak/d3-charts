@@ -1,0 +1,56 @@
+.barchart #visHolder {
+    background-color: white;
+    min-height: 340px;
+    margin-bottom: 10px;
+    margin: 30px;
+    width: fit-content;
+    margin: auto;
+}
+
+.barchart .bar {
+    fill: blue;
+}
+
+.barchart .bar:hover {
+    fill: gray;
+}
+
+.barchart #x-axis {
+   transform: translate(0, 320px);
+   z-index: 10;
+}
+
+.barchart #y-axis {
+    transform: translate(40px, 0);
+    z-index:10;
+}
+
+.barchart .tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 120px;					
+    height: auto;					
+    padding: 2px;				
+    font-size: 12px;	
+    background: lavender;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+.barchart #legend {
+    font-size: 16px;
+}
+
+.barchart svg {
+    margin-top: 10px;
+    transform: scale(0.9);
+}
+
+.barchart #subtitle {
+    margin-top: 20px;
+}
+
+.barchart p {
+    margin: 4px;
+}

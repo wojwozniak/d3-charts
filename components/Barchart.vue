@@ -1,18 +1,26 @@
 <template>
-    <div id="barchart" class="h-full w-full min-h-[500px] h-3/5 w-4/5 min-w-[600px] border-2 flex flex-col justify-center  items-center">
-        <h1 id="title">United States GDP</h1>
-        <h3 id="subtitle">1947-2015, Billions USD</h3>
-        <div id="visHolder"></div>
-    </div>
+    <h1 id="title">United States GDP</h1>
+    <h3 id="subtitle">1947-2015, Billions USD</h3>
+    <div id="visHolder" class="barchart"></div>
 </template>
 
 <script>
 import * as d3 from 'd3'
+import styles from '~/assets/css/Barchart.scss'
 
 export default {
     name: 'Barchart',
+    data() {
+        return {
+            styles
+        }
+    },
     mounted() {
-        let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json')
+        this.renderD3();
+    },
+    methods: {
+        renderD3() {
+            let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json')
         .then((data) => {
             // Extracting data for chart
             const dataset = data.data;
@@ -142,95 +150,9 @@ export default {
                 .attr('x', -290)
                 .attr('y', 60)
                 .text('US GDP, 1947-2015, Billions USD');
-        });
+            });
+        }
+
     }
 }
 </script>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); 
-
-#barchart body, #barchart html {
-    background-color: whitesmoke;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-family: 'Open Sans';
-    
-}
-
-#barchart #root {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-}
-
-#barchart #title {
-    padding-top: 50px;
-    margin: 0;
-}
-
-#barchart #visHolder {
-    background-color: white;
-    min-height: 340px;
-    margin-bottom: 10px;
-    margin: 30px;
-    width: fit-content;
-    margin: auto;
-}
-
-#barchart .bar {
-    fill: blue;
-}
-
-#barchart .bar:hover {
-    fill: gray;
-}
-
-#barchart #x-axis {
-   transform: translate(0, 320px);
-   z-index: 10;
-}
-
-#barchart #y-axis {
-    transform: translate(40px, 0);
-    z-index:10;
-}
-
-#barchart .tooltip {	
-    position: absolute;			
-    text-align: center;			
-    width: 120px;					
-    height: auto;					
-    padding: 2px;				
-    font-size: 12px;	
-    background: lavender;	
-    border: 0px;		
-    border-radius: 8px;			
-    pointer-events: none;			
-}
-
-#barchart a {
-    color: darkgoldenrod;
-    text-decoration: none;
-}
-
-#barchart #legend {
-    font-size: 16px;
-}
-
-#barchart svg {
-    margin-top: 10px;
-    transform: scale(0.9);
-}
-
-#barchart #subtitle {
-    margin-top: 20px;
-}
-
-#barchart p {
-    margin: 4px;
-}
-</style>

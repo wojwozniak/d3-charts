@@ -1,20 +1,26 @@
 <template>
-    <div id="scatterplot" class="h-full w-full min-h-[500px] h-3/5 w-4/5 min-w-[600px] border-2 flex flex-col justify-center  items-center">
-        <h1 id="title">Doping in Professional Bicycle Racing</h1>
-        <h3>Top 35 times, Alpe d'Huez</h3>
-        <div id="visHolder"></div>
-    </div>
+    <h1 id="title">Doping in Professional Bicycle Racing</h1>
+    <h3>Top 35 times, Alpe d'Huez</h3>
+    <div id="visHolder" class="scatterplot"></div>
 </template>
 
 <script>
 import * as d3 from 'd3'
+import styles from '~/assets/css/Scatterplot.scss'
 
 export default {
     name: 'Scatterplot',
+    data() {
+        return {
+            styles
+        }
+    },
     mounted() {
-    //D3
-    //Contact with API
-    let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/cyclist-data.json')
+        this.renderD3();
+    },
+    methods: {
+        renderD3() {
+            let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/cyclist-data.json')
         .then((data) => {
             console.log(data);
 
@@ -124,8 +130,7 @@ export default {
                 .attr("x", -263)
                 .attr("y", 56)
                 .attr("id", "axis-text")
-                .attr("transform", 'rotate(-90)')
-                .text(`Time in minutes and seconds`);
+                .attr("transform", 'rotate(-90)');
             
             // Adding legend
             const renderLegend = () => {
@@ -175,102 +180,7 @@ export default {
             }
             renderLegend();
         });
+        }
     }
 }
 </script>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); 
-
-#scatterplot body, #scatterplot html {
-    background-color: whitesmoke;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-family: 'Open Sans';
-    
-}
-
-#scatterplot #title {
-    padding-top: 25px;
-    padding: 8px;
-    margin-bottom: 0;
-}
-
-#scatterplot h3 {
-    margin: 0;
-    margin-bottom: 15px;
-}
-
-#scatterplot #root {
-    min-height: 100%;
-    background-color: whitesmoke;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#scatterplot #visHolder {
-    background-color: white;
-    min-height: 330px;
-    margin-bottom: 10px;
-    margin: 30px;
-    width: fit-content;
-    margin: auto;
-}
-
-
-#scatterplot #x-axis {
-    transform: translate(0, 300px);
-    z-index: 10;
- }
- 
- #scatterplot #y-axis {
-     transform: translate(40px, 0);
-     z-index: 10;
- }
-
- #scatterplot .tooltip {	
-    position: absolute;			
-    text-align: center;			
-    width: 160px;					
-    height: auto;					
-    padding: 2px;				
-    font-size: 12px;	
-    background: lavender;	
-    border: 0px;		
-    border-radius: 8px;			
-    pointer-events: none;			
-}
-
-#scatterplot .legend-item {
-    font-size: 12px;
-}
-
-#scatterplot a {
-    text-decoration: none;
-    color: goldenrod;
-}
-
-#scatterplot #legend {
-    font-size: 16px;
-}
-
-#scatterplot #axis-text {
-    font-size: 16px;
-}
-
-#scatterplot svg {
-    margin-top: 10px;
-    transform: scale(0.9);
-}
-
-#scatterplot p {
-    margin: 4px;
-}
-
-#scatterplot #subtitle {
-    margin-top: 20px;
-}
-</style>
