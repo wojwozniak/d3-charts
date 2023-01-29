@@ -4,12 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
-body, html {
+body, html, #__nuxt {
     background-color: whitesmoke;
     margin: 0;
     padding: 0;
     border: 0;
     font-family: 'Open Sans';
+    min-height: 100vh;
     
 }
 
@@ -31,4 +32,13 @@ h3 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#title {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+#subtitle {
+    font-size: 18px;
 }

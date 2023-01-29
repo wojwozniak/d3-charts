@@ -9,6 +9,7 @@
 <script>
 import * as d3 from 'd3'
 import styles from '~/assets/css/Choropleth.scss'
+import { mesh, feature } from 'topojson'
 
 export default {
     name: 'Choropleth',
@@ -68,7 +69,7 @@ export default {
                     .append("g")
                     .attr("class", "counties")
                     .selectAll("path")
-                    .data(topojson.feature(us, us.objects.counties).features)
+                    .data(feature(us, us.objects.counties).features)
                     .enter()
                     .append("path")
                     .attr("class", "county")
@@ -127,7 +128,7 @@ export default {
                 const state_borders = svg.append("path")
                     .attr("class", "state-borders")
                     .attr("d", path(
-                    topojson.mesh(us, us.objects.states, (a, b) => a !== b)
+                    mesh(us, us.objects.states, (a, b) => a !== b)
                     ));
 
                 

@@ -22,7 +22,6 @@ export default {
         renderD3() {
             let response = d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/cyclist-data.json')
         .then((data) => {
-            console.log(data);
 
             // Chart constants
             const w = 760;

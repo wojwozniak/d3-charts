@@ -1,4 +1,4 @@
-.treemap #link-container {
+#link-container {
     text-align: center;
     height: fit-content;
     width: fit-content;
@@ -9,28 +9,8 @@
     padding-top: 25px;
 }
 
-.treemap #link-container a {
+#link-container a {
     cursor: pointer;
-}
-
-.treemap #title {
-    padding: 8px;
-    margin: 4px;
-}
-
-.treemap h3 {
-    margin: 0;
-    margin-bottom: 15px;
-}
-
-.treemap #root {
-    min-height: 100%;
-    background-color: whitesmoke;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
 }
 
 .treemap #visHolder {
