@@ -28,7 +28,7 @@ export default {
     <button class="fixed top-0 right-0 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l" @click="open = !open">
       <i class="fas fa-bars menu-icon"></i>
     </button>
-    <transition name="fade" class="fixed">
+    <transition name="fade" class="absolute">
       <div v-if="open" class="fixed top-[40px] right-0 py-2 w-48 bg-white rounded-md shadow-md z-10">
         <a href="#" :value={i}  @click="updateChart(i)" class="block px-4 py-2 text-sm z-10 text-gray-700 hover:bg-gray-100" v-for="(i) in menuItems">{{i}}</a>
       </div>
