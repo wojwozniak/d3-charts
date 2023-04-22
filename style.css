@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); 
+
+body, html {
+    background-color: whitesmoke;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: 'Open Sans';
+    text-align: center;
+    
+}
+
+#title {
+    padding-top: 25px;
+    padding: 8px;
+    margin-bottom: 0;
+}
+
+h3 {
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+#root {
+    min-height: 100%;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#visHolder {
+    background-color: white;
+    min-height: 530px;
+    margin-bottom: 10px;
+    margin: 30px;
+    width: fit-content;
+    margin: auto;
+}
+
+svg {
+    margin-top: 10px;
+    transform: scale(0.9);
+}
+
+@media screen and (max-width: 1250px) {
+    svg {
+        margin-left: -125px;
+        margin-right: -125px;
+    }
+    
+}
+
+#x-axis {
+    transform: translate(0, 430px);
+    z-index: 10;
+ }
+
+#y-axis {
+    transform: translate(70px, 0);
+    z-index: 10;
+ }
+
+ .tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 80px;					
+    height: auto;					
+    padding: 2px;				
+    font-size: 13px;	
+    background: lavender;	
+    border: solid 1px black;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+.cell:hover {
+    stroke: black;
+    z-index: 10;
+}
+
+#l-axis {
+    z-index: 10;
+    transform: translate(0, 500px);
+}
+
+a {
+    text-decoration: none;
+    color: goldenrod;
+}
+
+svg {
+    transform: scale(0.8);
+}
+
+#subtitle {
+    margin-top: 20px;
+}
+
+p {
+    margin: 4px;
+}
