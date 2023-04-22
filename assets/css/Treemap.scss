@@ -1,0 +1,79 @@
+#link-container {
+    text-align: center;
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    padding-top: 25px;
+}
+
+#link-container a {
+    cursor: pointer;
+}
+
+.treemap #visHolder {
+    background-color: white;
+    min-height: 530px;
+    margin-bottom: 10px;
+    margin: 30px;
+    width: fit-content;
+    margin: auto;
+}
+
+.treemap svg {
+    margin-top: 10px;
+    transform: scale(0.9);
+}
+
+.treemap .label {
+    font-size: 0.65rem;
+}
+
+.treemap text {
+    font-size: 0.75rem;
+}
+
+.treemap .tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: fit-content;					
+    height: auto;					
+    padding: 10px;				
+    font-size: 13px;	
+    background: #fdee87;	
+    border: solid 1px black;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+.treemap a {
+    text-decoration: none;
+    color: goldenrod;
+}
+
+.treemap svg {
+    transform: scale(0.8);
+}
+
+.treemap #subtitle {
+    margin-top: 20px;
+}
+
+.treemap p {
+    margin: 4px;
+}
+
+.treemap .group:hover .tile {
+    fill: whitesmoke;
+}
+
+.treemap .group {
+    cursor: default;
+}
+
+.treemap #legend-title {
+    font-size: 25px;
+    font-weight: bold;
+}
