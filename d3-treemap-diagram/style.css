@@ -108,3 +108,11 @@ p {
     font-size: 25px;
     font-weight: bold;
 }
+
+#main-link {
+    position: absolute;
+    color: 30px;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+}

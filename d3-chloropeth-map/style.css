@@ -112,3 +112,11 @@ p {
     stroke-linecap: round;
     pointer-events: none;
 }
+
+#main-link {
+    position: fixed;
+    color: 30px;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+}
