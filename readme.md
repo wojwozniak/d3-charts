@@ -17,7 +17,7 @@
 **Live website**
 
 
-- You can check out those charts on the website i have created (link in top right corner of page).
+- You can check out those charts on the website i have created - [link](https://wojwozniak.com/d3-charts/)
 
 **Certificate**
 
